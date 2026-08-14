@@ -1,5 +1,6 @@
 from playwright.sync_api import sync_playwright, expect
 
+
 def test_login_langsung():
     with sync_playwright() as p:
         # Membuka browser dalam mode headed
