@@ -19,7 +19,7 @@ def test_login_langsung():
 
         # Mengisi Password menggunakan get_by_role textbox berdasarkan teks labelnya
         print("Mengisi Password...")
-        page.get_by_role("textbox", name="Password").fill("------------")
+        page.get_by_role("textbox", name="Password").fill("iiiii")
 
         # Klik tombol Sign in
         print("Mengklik tombol Sign in...")

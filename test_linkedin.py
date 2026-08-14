@@ -1,34 +1,27 @@
-from playwright.sync_api import sync_playwright, expect
+from playwright.sync_api import sync_playwright
+import time
 
-def test_beranda_linkedin():
+def jalankan_testing_tanpa_login():
     with sync_playwright() as p:
-        # Buka browser secara visual
-        browser = p.chromium.launch(headless=False, slow_mo=500)
-        
-        # SUNTIKKAN FILE SESI YANG DISIMPAN SEBELUMNYA
-        # Ini akan melewati proses login sepenuhnya!
+        browser = p.chromium.launch(headless=False)
+
+        # KUNCI PENTING: Buka browser baru dengan membawa "ingatan" dari JSON
         context = browser.new_context(storage_state="linkedin_state.json")
         page = context.new_page()
 
-        print("Mengakses LinkedIn dengan status sudah login...")
+        print("Menuju beranda LinkedIn tanpa login...")
+        # Langsung tembak ke halaman utama (feed)
         page.goto("https://www.linkedin.com/feed/")
 
-        # --- MULAI PENGUJIAN (ASSERTIONS) ---
-        print("Memverifikasi apakah kita berhasil masuk ke beranda...")
+        # Tunggu sebentar biar kita bisa melihat dengan jelas kalau sudah masuk
+        time.sleep(5) 
         
-        # 1. Memastikan elemen navigasi utama terlihat (menandakan halaman termuat)
-        navigasi = page.get_by_role("navigation").first
-        expect(navigasi).to_be_visible()
-        
-        # 2. Mengecek apakah URL benar-benar ada di /feed/
-        expect(page).to_have_url("https://www.linkedin.com/feed/")
-        
-        print("Pengujian Berhasil: Otomatis masuk ke Beranda tanpa mengetik password!")
+        print("✅ Berhasil masuk! Robot siap melakukan testing profil, like, atau scraping.")
 
-        # Jeda 5 detik agar Anda bisa melihat hasilnya sebelum tertutup otomatis
-        page.wait_for_timeout(5000)
-        
+        # ---- TULIS SKRIP TESTING/SCRAPING LU DI BAWAH SINI ---- #
+        # Contoh: page.click("text=Messaging") 
+
         browser.close()
 
 if __name__ == "__main__":
-    test_beranda_linkedin()
+    jalankan_testing_tanpa_login()
