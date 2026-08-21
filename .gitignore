@@ -1,1 +1,25 @@
+# Lingkungan Virtual Python (Sangat besar, jangan diupload)
+venv/
 env/
+.venv/
+
+# Cache dan file kompilasi Python
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+
+# Profil Chrome Lokal Anda (Data browsing, ukurannya bisa bergiga-giga)
+crome_profile/
+
+# File Log, Laporan, dan Tangkapan Layar (Hasil test lokal)
+*.log
+reports/
+screenshots/
+
+# File rahasia yang mungkin berisi username/password (SANGAT PENTING)
+.env
+
+# Pengaturan spesifik Editor/OS lokal
+.DS_Store
+.claude/settings.local.json
